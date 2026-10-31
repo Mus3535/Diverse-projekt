@@ -2,24 +2,32 @@ import { useState } from 'react';
 import { StyleSheet, TouchableOpacity, View, Text } from 'react-native';
 
 export default function App(){
+  const[disp,setDisp]=useState(0);
+  const[cache,setCache]=useState(0);
   return(
     <View style={styles.container}>
       <Text style={styles.titel}>Miniräknare</Text>
+      <View style={styles.display}>
+        <Text style={styles.displaytext}> {disp} </Text>
+      </View>
       <View style={styles.numpad}>
         <TouchableOpacity
           style={styles.numknapp}
+          onPress={() => setDisp(disp*10+1)}            
         >
           <Text>1</Text>
 
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.numknapp}
+          onPress={() => setDisp(disp*10+2)}
         >
           <Text>2</Text>
 
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.numknapp}
+          onPress={() => setDisp(disp*10+3)}
         >
           <Text>3</Text>
 
@@ -27,18 +35,21 @@ export default function App(){
 
         <TouchableOpacity
           style={styles.numknapp}
+          onPress={() => setDisp(disp*10+4)}
         >
           <Text>4</Text>
 
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.numknapp}
+          onPress={() => setDisp(disp*10+5)}
         >
           <Text>5</Text>
 
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.numknapp}
+          onPress={() => setDisp(disp*10+6)}
         >
           <Text>6</Text>
 
@@ -46,18 +57,21 @@ export default function App(){
 
         <TouchableOpacity
           style={styles.numknapp}
+          onPress={() => setDisp(disp*10+7)}
         >
           <Text>7</Text>
 
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.numknapp}
+          onPress={() => setDisp(disp*10+8)}
         >
           <Text>8</Text>
 
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.numknapp}
+          onPress={() => setDisp(disp*10+9)}
         >
           <Text>9</Text>
 
@@ -65,14 +79,37 @@ export default function App(){
 
         <TouchableOpacity
           style={styles.numknapp}
+          onPress={() => setDisp(disp*10)}
         >
           <Text>0</Text>
 
         </TouchableOpacity>
+
+        <TouchableOpacity
+          style={styles.numknapp}
+          onPress={() => setDisp(disp+1)}
+        >
+          <Text>+</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={styles.numknapp}
+          onPress={() => setDisp(0)}
+        >
+          <Text>=</Text>
+
+        </TouchableOpacity>
       </View>
+      <TouchableOpacity
+        style={styles.numknapp}
+        onPress={() => setDisp(0)}
+      >
+        <Text>ac</Text>
+      </TouchableOpacity>
     </View>
   )
 }
+
 
 const styles = StyleSheet.create({
     container:{
@@ -83,7 +120,20 @@ const styles = StyleSheet.create({
         alignContent:'center',
         justifyContent:'center'
         
-    },    
+    },
+    display:{
+      width: '90%',
+      height:'30%',
+      
+      backgroundColor:'#FFF',
+      justifyContent: 'center',
+      alignItems: 'center',
+      alignContent: 'center',
+      
+    },
+    displaytext:{
+
+    },
     numpad:{
       backgroundColor:'#5d1fc2',
       justifyContent:'center',
