@@ -4,6 +4,7 @@ import { StyleSheet, TouchableOpacity, View, Text } from 'react-native';
 export default function App(){
   const[disp,setDisp]=useState(0);
   const[cache,setCache]=useState(0);
+  const[mode,setMode]=useState(0);
   return(
     <View style={styles.container}>
       <Text style={styles.titel}>Miniräknare</Text>
@@ -87,14 +88,65 @@ export default function App(){
 
         <TouchableOpacity
           style={styles.numknapp}
-          onPress={() => setDisp(disp+1)}
+          onPress={() => {
+            setCache(cache+disp)
+            setDisp(0)
+            setMode(1)
+          }}
         >
           <Text>+</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
           style={styles.numknapp}
-          onPress={() => setDisp(0)}
+          onPress={() => {
+            setCache(disp-cache)
+            setDisp(0)
+            setMode(2)
+          }}
+        >
+          <Text>-</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={styles.numknapp}
+          onPress={() => {
+            setCache(cache*disp)
+            setDisp(0)
+            setMode(3)
+          }}
+        >
+          <Text>x</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={styles.numknapp}
+          onPress={() => {
+            setCache(cache/disp)
+            setDisp(0)
+            setMode(4)
+          }}
+        >
+          <Text>/</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={styles.numknapp}
+          onPress={() => {
+            if(mode==1){
+            setDisp(cache+disp)
+            }
+            else if(mode==2){
+            setDisp(cache-disp)
+            }
+            else if(mode==3){
+            setDisp(cache*disp)
+            }
+            else if(mode==4){
+            setDisp(cache/disp)
+            }
+            setCache(0)
+          }}
         >
           <Text>=</Text>
 
@@ -102,9 +154,22 @@ export default function App(){
       </View>
       <TouchableOpacity
         style={styles.numknapp}
-        onPress={() => setDisp(0)}
+        onPress={() => {
+          setDisp(0)
+          setCache(0)
+        }}
       >
         <Text>ac</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        style={styles.numknapp}
+        onPress={() => {
+          console.log('mode är:'+mode)
+          console.log('cache är:'+cache)
+        }}
+      >
+        <Text>md/ch</Text>
       </TouchableOpacity>
     </View>
   )
@@ -116,7 +181,7 @@ const styles = StyleSheet.create({
         flex:1, 
         backgroundColor:'#b36868',
         margin: '10%',
-        padding: '10%',
+        padding: '1%',
         alignContent:'center',
         justifyContent:'center'
         
