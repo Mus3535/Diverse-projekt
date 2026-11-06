@@ -1,16 +1,12 @@
 
 import { Image, StyleSheet, Text, View } from 'react-native';
 import { TouchableOpacity } from 'react-native';
-import registerRootComponent from 'expo/src/launch/registerRootComponent.web.ts';
-import { useState } from 'react';
-//  registerRootComponent(fp)
 
-export default function pp() {
-  const[cache,setCache]=useState(0)  
+export default function pp() {  
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Image source={require('../assets/android-icon-foreground.png')} style={styles.icon}/>
+        <Image source={require('../../assets/android-icon-foreground.png')} style={styles.icon}/>
         <Text style={styles.htitle}>ReelLife</Text>
       </View>
       <View style={styles.centcont}> 

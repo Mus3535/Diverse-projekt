@@ -3,6 +3,14 @@
     "name": "i-love-reels",
     "slug": "i-love-reels",
     "version": "1.0.0",
+    "scheme":"your-app-scheme",
+    "plugins": [
+      "expo-router",
+      "expo-status-bar"
+    ],
+    "experiments":{
+      "typedRoutes":true
+    },
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
